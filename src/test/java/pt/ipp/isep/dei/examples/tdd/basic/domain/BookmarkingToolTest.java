@@ -90,7 +90,15 @@ public class BookmarkingToolTest {
         file.deleteOnExit();
     }
 
+    @Test
+    public void ensureFileCreationDoesntCreateDuplicateFile() throws IOException {
+        // Act
+        File file = new BookmarkingTool().createFile("test.txt");
+        File file2 = new BookmarkingTool().createFile("test.txt");
+
+        // Assert
+        assertEquals(file, file2);
+        file.deleteOnExit();
+    }
+
 }
-
-
-

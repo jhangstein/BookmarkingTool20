@@ -8,11 +8,9 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        BookmarkingTool fileWriter = new BookmarkingTool();
-        File toWrite = new File("solvingissues.txt");
-
-        fileWriter.addURL("https://github.com/SnG1205/BookmarkingTool", toWrite );
-        fileWriter.addURL("https://www.baeldung.com/java-write-to-file", toWrite );
-
+        BookmarkingTool bookmarkingTool = new BookmarkingTool();
+        bookmarkingTool.addURL("https://github.com/SnG1205/BookmarkingTool");
+        bookmarkingTool.addURL("https://www.baeldung.com/java-write-to-file");
+        bookmarkingTool.addURL("https://github.com/SnG1205/BookmarkingTool");
     }
 }

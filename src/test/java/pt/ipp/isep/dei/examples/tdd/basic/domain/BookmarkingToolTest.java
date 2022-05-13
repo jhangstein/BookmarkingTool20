@@ -1,9 +1,12 @@
 package pt.ipp.isep.dei.examples.tdd.basic.domain;
 
+import org.apache.commons.validator.routines.UrlValidator;
 import org.junit.jupiter.api.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -102,7 +105,13 @@ public class BookmarkingToolTest {
     }
 
     @Test
-    public void ensureUrlIsValid(){
+    public void ensureUrlIsValid() throws IOException {
 
+        assertTrue(new BookmarkingTool().validateUrl("https://github.com/SnG1205/BookmarkingTool"));
+    }
+
+    @Test
+    public void ensureUrlIsNotValid() throws IOException {
+        assertFalse(new BookmarkingTool().validateUrl("https://github.con"));
     }
 }

@@ -101,4 +101,8 @@ public class BookmarkingToolTest {
         file.deleteOnExit();
     }
 
+    @Test
+    public void ensureUrlIsValid(){
+
+    }
 }

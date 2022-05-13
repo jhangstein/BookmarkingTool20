@@ -7,12 +7,14 @@ import java.net.URL;
 
 
 
+
 /**
  * Calculator class.
  * This class is very simple in order to demonstrate how to build test cases for Unit Testing.
  */
 public class BookmarkingTool {
 
+    FileWriter fileWriter = new FileWriter("solvingissues.txt");
 
 
 
@@ -30,5 +32,23 @@ public class BookmarkingTool {
         return fileToCreate;
     }
 
+
+    public boolean validateUrl(String url){
+        return true;
+    }
+
+    public void  addURL(String url, File fileToWrite) throws MalformedURLException, IOException {
+        URL urlToSave = new URL(url);
+        PrintWriter printWriter = new PrintWriter(fileWriter);
+        System.out.println(urlToSave.getProtocol());
+
+
+
+
+        printWriter.write(url);
+        //printWriter.newLine();
+        printWriter.close();
+
+    }
 
 }

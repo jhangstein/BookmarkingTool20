@@ -2,10 +2,12 @@ package pt.ipp.isep.dei.examples.tdd.basic.domain;
 
 import org.junit.jupiter.api.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import java.io.File;
+import java.io.IOException;
 
-public class CalculatorTest {
+import static org.junit.jupiter.api.Assertions.*;
+
+public class BookmarkingToolTest {
 
     @BeforeAll
     public static void classSetUp() {
@@ -49,25 +51,7 @@ public class CalculatorTest {
      * Act: sum both numbers (three and two).<p>
      * Assert: the result is five.
      */
-    @Test
-    public void ensureThreePlusTwoEqualsFive() {
 
-        //HACK: for demonstration purposes only
-        System.out.println("\t\tExecuting " + new Object() {
-        }.getClass().getEnclosingMethod().getName() + " Test");
-
-        // Arrange
-        int expectedResult = 5;
-        int firsOperand = 3;
-        int secondOperand = 2;
-        int result = 3;
-
-        // Act
-        result = new Calculator().sum(firsOperand, secondOperand);
-
-        // Assert
-        assertEquals(expectedResult, result);
-    }
 
     /**
      * Test to ensure positive and negative numbers are summed correctly.<p>
@@ -77,7 +61,7 @@ public class CalculatorTest {
      * Act I sum three to minus two<p>
      * Assert the sum result should be one.
      */
-    @Test
+   /* @Test
     public void ensureThreePlusMinusTwoEqualsOne() {
         //HACK: for demonstration purposes only
         System.out.println("\t\tExecuting " + new Object() {
@@ -94,7 +78,18 @@ public class CalculatorTest {
 
         // Assert
         assertEquals(expectedResult, result);
+    }*/
+
+    @Test
+    public void ensureFileCreationCreatesNewFile() throws IOException {
+        // Act
+        File file = new BookmarkingTool().createFile("test.txt");
+
+        // Assert
+        assertTrue(file.exists());
+        file.deleteOnExit();
     }
+
 }
 
 

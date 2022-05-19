@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import org.apache.commons.validator.routines.*;
+import org.apache.commons.io.*;
 
 
 /**
@@ -16,9 +17,9 @@ import org.apache.commons.validator.routines.*;
  */
 public class BookmarkingTool {
 
-    FileWriter fileWriter = new FileWriter("solvingissues.txt");
+    /*FileWriter fileWriter = new FileWriter("solvingissues.txt");
     PrintWriter printWriter = new PrintWriter(fileWriter, true);
-    Path path = Paths.get("solvingissues.txt");
+    Path path = Paths.get("solvingissues.txt");*/
 
 
     public BookmarkingTool() throws IOException {
@@ -42,14 +43,14 @@ public class BookmarkingTool {
         return urlValidator.isValid(url);
     }
 
-    public void  addURL(String url) throws MalformedURLException, IOException {
+    public void  addURL(String url, String fileName) throws MalformedURLException, IOException {
         URL urlToSave = new URL(url);
 
         System.out.println(urlToSave.getProtocol());
 
 
-        /*FileUtils.writeStringToFile(
-                file, "Spain\r\n", StandardCharsets.UTF_8, true);
+        FileUtils.writeStringToFile(
+                new File(fileName), url +'\n', StandardCharsets.UTF_8, true);
 
 
 

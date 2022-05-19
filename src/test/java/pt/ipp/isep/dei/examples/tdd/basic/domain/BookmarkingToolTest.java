@@ -3,7 +3,9 @@ package pt.ipp.isep.dei.examples.tdd.basic.domain;
 import org.apache.commons.validator.routines.UrlValidator;
 import org.junit.jupiter.api.*;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -106,12 +108,56 @@ public class BookmarkingToolTest {
 
     @Test
     public void ensureUrlIsValid() throws IOException {
-
         assertTrue(new BookmarkingTool().validateUrl("https://github.com/SnG1205/BookmarkingTool"));
     }
 
     @Test
     public void ensureUrlIsNotValid() throws IOException {
         assertFalse(new BookmarkingTool().validateUrl("https://github.con"));
+    }
+
+    @Test
+    public void ensureUrlIsAdded() throws IOException {
+        BookmarkingTool bookmarkingTool = new BookmarkingTool();
+
+        String url = "https://github.com/SnG1205/BookmarkingTool";
+        boolean assertion = false;
+
+        File file = new BookmarkingTool().createFile("testAdd.txt");
+        bookmarkingTool.addURL(url, "testAdd.txt");
+        FileReader fr = new FileReader(file);
+        BufferedReader br = new BufferedReader(fr);
+        String line = "";
+
+
+        while((line = br.readLine()) != null){
+            if (line.equals(url)){
+                assertion = true;
+            }
+        }
+        assertTrue(assertion);
+    }
+
+    @Test
+    public void ensureNotBookmarkedUrlReturnsFalse() throws IOException {
+        BookmarkingTool bookmarkingTool = new BookmarkingTool();
+
+        String url = "https://www.baeldung.com/java-write-to-file";
+        String wrongUrl = "https://www.hltv.org/";
+        boolean assertion = false;
+
+        File file = new BookmarkingTool().createFile("testAdd.txt");
+        bookmarkingTool.addURL(url, "testAdd.txt");
+        FileReader fr = new FileReader(file);
+        BufferedReader br = new BufferedReader(fr);
+        String line = "";
+
+
+        while((line = br.readLine()) != null){
+            if (line.equals(wrongUrl)){
+                assertion = true;
+            }
+        }
+        assertFalse(assertion);
     }
 }

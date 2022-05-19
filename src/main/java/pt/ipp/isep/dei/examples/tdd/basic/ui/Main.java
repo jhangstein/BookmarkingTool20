@@ -9,8 +9,8 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BookmarkingTool bookmarkingTool = new BookmarkingTool();
-        bookmarkingTool.addURL("https://github.com/SnG1205/BookmarkingTool");
-        bookmarkingTool.addURL("https://www.baeldung.com/java-write-to-file");
-        bookmarkingTool.addURL("https://github.com/SnG1205/BookmarkingTool");
+        bookmarkingTool.addURL("https://github.com/SnG1205/BookmarkingTool", "solviningissues.txt");
+        bookmarkingTool.addURL("https://www.baeldung.com/java-write-to-file", "solviningissues.txt");
+        bookmarkingTool.addURL("https://github.com/SnG1205/BookmarkingTool", "solviningissues.txt");
     }
 }

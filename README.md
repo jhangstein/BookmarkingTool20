@@ -7,6 +7,12 @@
 - Add  URL to created File
 
 
+## Tag URL by word
 
+- Add parameter "tag" to "addUrl" method, so that this tag appears after URL in .txt file
   
+### Tests
+1. Ensure that the tag is assigned to a URL.
+2. Ensure that the right tag is assigned to a URL. In case another tag was assigned, test should fail.
+
 

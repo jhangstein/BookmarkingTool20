@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -124,14 +125,14 @@ public class BookmarkingToolTest {
         boolean assertion = false;
 
         File file = new BookmarkingTool().createFile("testAdd.txt");
-        bookmarkingTool.addURL(url, "testAdd.txt");
+        bookmarkingTool.addURL(url, "testAdd.txt", "github");
         FileReader fr = new FileReader(file);
         BufferedReader br = new BufferedReader(fr);
         String line = "";
 
 
         while((line = br.readLine()) != null){
-            if (line.equals(url)){
+            if (line.split(" ")[0].equals(url)){
                 assertion = true;
             }
         }
@@ -147,16 +148,68 @@ public class BookmarkingToolTest {
         boolean assertion = false;
 
         File file = new BookmarkingTool().createFile("testAdd.txt");
-        bookmarkingTool.addURL(url, "testAdd.txt");
+        bookmarkingTool.addURL(url, "testAdd.txt", "hltv");
         FileReader fr = new FileReader(file);
         BufferedReader br = new BufferedReader(fr);
         String line = "";
 
 
         while((line = br.readLine()) != null){
-            if (line.equals(wrongUrl)){
+            if (line.split(" ")[0].equals(wrongUrl)){
                 assertion = true;
             }
+        }
+        assertFalse(assertion);
+    }
+
+    @Test
+    public void EnsureThatTagIsAdded() throws IOException {
+        BookmarkingTool bookmarkingTool = new BookmarkingTool();
+
+        String url = "https://www.baeldung.com/java-write-to-file";
+        String tag = "baeldung";
+        boolean assertion = false;
+
+        File file = new BookmarkingTool().createFile("testTags.txt");
+        bookmarkingTool.addURL(url, "testTags.txt", tag);
+        FileReader fr = new FileReader(file);
+        BufferedReader br = new BufferedReader(fr);
+        String line = "";
+
+
+        while((line = br.readLine()) != null){
+            if (line.split(" ")[0].equals(url)){
+                if (line.split(" ")[2].equals(tag)){
+                    assertion = true;
+                }
+            }
+
+        }
+        assertTrue(assertion);
+    }
+
+    @Test
+    public void EnsureThatTheRightTagIsAdded() throws IOException {
+        BookmarkingTool bookmarkingTool = new BookmarkingTool();
+
+        String url = "https://www.hltv.org/";
+        String tag = "hltv";
+        boolean assertion = false;
+
+        File file = new BookmarkingTool().createFile("testTags.txt");
+        bookmarkingTool.addURL(url, "testTags.txt", "baeldung");
+        FileReader fr = new FileReader(file);
+        BufferedReader br = new BufferedReader(fr);
+        String line = "";
+
+
+        while((line = br.readLine()) != null){
+            if (line.split(" ")[0].equals(url)){
+                if (line.split(" ")[2].equals(tag)){
+                    assertion = true;
+                }
+            }
+
         }
         assertFalse(assertion);
     }

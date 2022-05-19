@@ -4,3 +4,6 @@ https://github.com/SnG1205/BookmarkingTool
 https://github.com/SnG1205/BookmarkingTool
 https://www.baeldung.com/java-write-to-file
 https://github.com/SnG1205/BookmarkingTool
+https://github.com/SnG1205/BookmarkingTool - github
+https://www.baeldung.com/java-write-to-file - baeldung
+https://github.com/SnG1205/BookmarkingTool - github

@@ -43,14 +43,14 @@ public class BookmarkingTool {
         return urlValidator.isValid(url);
     }
 
-    public void  addURL(String url, String fileName) throws MalformedURLException, IOException {
+    public void  addURL(String url, String fileName, String tag) throws MalformedURLException, IOException {
         URL urlToSave = new URL(url);
 
         System.out.println(urlToSave.getProtocol());
 
 
         FileUtils.writeStringToFile(
-                new File(fileName), url +'\n', StandardCharsets.UTF_8, true);
+                new File(fileName), url + " - " + tag + '\n', StandardCharsets.UTF_8, true);
 
 
 

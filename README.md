@@ -15,4 +15,5 @@
 1. Ensure that the tag is assigned to a URL.
 2. Ensure that the right tag is assigned to a URL. In case another tag was assigned, test should fail.
 
-
+## Duplicate Detection
+-If given URL is duplicate of the one that already exists, it should not be added to the list.

@@ -45,12 +45,22 @@ public class BookmarkingTool {
 
     public void  addURL(String url, String fileName, String tag) throws MalformedURLException, IOException {
         URL urlToSave = new URL(url);
+        int count = 0;
 
         System.out.println(urlToSave.getProtocol());
+        FileReader fr = new FileReader(fileName);
+        BufferedReader br = new BufferedReader(fr);
+        String line = "";
 
-
-        FileUtils.writeStringToFile(
-                new File(fileName), url + " - " + tag + '\n', StandardCharsets.UTF_8, true);
+        while((line = br.readLine()) != null){
+            if (line.split(" ")[0].equals(url)){
+                count++;
+            }
+        }
+        if (count == 0) {
+            FileUtils.writeStringToFile(
+                    new File(fileName), url + " - " + tag + '\n', StandardCharsets.UTF_8, true);
+        }
 
 
 

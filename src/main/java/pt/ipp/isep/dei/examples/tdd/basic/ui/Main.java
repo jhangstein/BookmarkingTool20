@@ -12,5 +12,6 @@ public class Main {
         bookmarkingTool.addURL("https://github.com/SnG1205/BookmarkingTool", "solvingissues.txt", "github");
         bookmarkingTool.addURL("https://www.baeldung.com/java-write-to-file", "solvingissues.txt", "baeldung");
         bookmarkingTool.addURL("https://github.com/SnG1205/BookmarkingTool", "solvingissues.txt", "github");
+        bookmarkingTool.addURL("https://www.hltv.org/", "solvingissues.txt", "hltv");
     }
 }

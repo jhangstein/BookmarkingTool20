@@ -1,5 +1,6 @@
 package pt.ipp.isep.dei.examples.tdd.basic.domain;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import org.apache.commons.validator.routines.UrlValidator;
 import org.junit.jupiter.api.*;
 
@@ -213,4 +214,31 @@ public class BookmarkingToolTest {
         }
         assertFalse(assertion);
     }
+
+    @Test
+    public void EnsureThatTheDuplicateIsFound() throws IOException {
+        BookmarkingTool bookmarkingTool = new BookmarkingTool();
+
+        String url = "https://www.hltv.org/";
+        String tag = "hltv";
+        int counter = 0;
+        int expected = 1;
+
+        File file = new BookmarkingTool().createFile("testDuplicates.txt");
+        bookmarkingTool.addURL(url, "testDuplicates.txt", tag);
+        bookmarkingTool.addURL(url, "testDuplicates.txt", tag);
+        bookmarkingTool.addURL(url, "testDuplicates.txt", "different tag");
+
+        FileReader fr = new FileReader(file);
+        BufferedReader br = new BufferedReader(fr);
+        String line = "";
+
+        while((line = br.readLine()) != null){
+            counter++;
+        }
+
+
+        assertEquals(expected, counter);
+    }
+
 }

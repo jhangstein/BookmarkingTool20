@@ -1,13 +1,10 @@
 package pt.ipp.isep.dei.examples.tdd.basic.domain;
 
-import com.sun.xml.internal.bind.v2.TODO;
+import jdk.jfr.Description;
 import org.apache.commons.validator.routines.UrlValidator;
 import org.junit.jupiter.api.*;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
@@ -162,6 +159,41 @@ public class BookmarkingToolTest {
         }
         assertFalse(assertion);
     }
+
+    @Test
+    @Description("Added to Increase Code Coverage")
+    public void EnsureNewUrlGetsAdded() throws IOException {
+        BookmarkingTool bookmarkingTool = new BookmarkingTool();
+
+        String url = "https://www.javatpoint.com/how-to-remove-last-character-from-string-in-java";
+        boolean assertion = false;
+
+        File file = new BookmarkingTool().createFile("testAdd.txt");
+        bookmarkingTool.addURL(url, "testAdd.txt", "javatpoint");
+        FileReader fr = new FileReader(file);
+        BufferedReader br = new BufferedReader(fr);
+        String line = "";
+
+
+        while((line = br.readLine()) != null){
+            if (line.split(" ")[0].equals(url)){
+                assertion = true;
+            }
+        }
+        assertTrue(assertion);
+
+        RandomAccessFile f = new RandomAccessFile("testAdd.txt", "rw");
+        long length = f.length() - 1;
+        byte b;
+        do {
+            length -= 1;
+            f.seek(length);
+             b = f.readByte();
+        } while(b != 10);
+        f.setLength(length+1);
+        f.close();
+    }
+
 
     @Test
     public void EnsureThatTagIsAdded() throws IOException {

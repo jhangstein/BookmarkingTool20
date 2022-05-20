@@ -17,3 +17,9 @@
 
 ## Duplicate Detection
 -If given URL is duplicate of the one that already exists, it should not be added to the list.
+
+
+## Secure URLs
+-Read from file line by line, if URL contains "https", then it is secure.
+-Add Secure file to a List.
+-Return List.

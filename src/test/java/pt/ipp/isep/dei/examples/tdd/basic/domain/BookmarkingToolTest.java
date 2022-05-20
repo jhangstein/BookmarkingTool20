@@ -7,7 +7,9 @@ import org.junit.jupiter.api.*;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -271,6 +273,29 @@ public class BookmarkingToolTest {
 
 
         assertEquals(expected, counter);
+    }
+
+
+    @Test
+    public void EnsureThatSecureUrlsAreListedCorrectly() throws IOException {
+        BookmarkingTool bookmarkingTool = new BookmarkingTool();
+
+
+        File file = new BookmarkingTool().createFile("testSecure.txt");
+        bookmarkingTool.addURL("https://www.hltv.org/", "testSecure.txt", "hltv");
+        bookmarkingTool.addURL("https://www.baeldung.com/java-write-to-file", "testSecure.txt", "baeldung");
+        bookmarkingTool.addURL("https://github.com/SnG1205/BookmarkingTool", "testSecure.txt", "different tag");
+        bookmarkingTool.addURL("http://info.cern.ch/", "testSecure.txt", "cern");
+
+        List<String> secureList = bookmarkingTool.checkForSecureURLs("testSecure.txt");
+
+        List<String> expectedList = new ArrayList<>();
+        expectedList.add("https://www.hltv.org/");
+        expectedList.add("https://www.baeldung.com/java-write-to-file");
+        expectedList.add("https://github.com/SnG1205/BookmarkingTool");
+
+        assertEquals(secureList, expectedList);
+
     }
 
 }

@@ -7,6 +7,9 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.validator.routines.*;
 import org.apache.commons.io.*;
 
@@ -68,6 +71,22 @@ public class BookmarkingTool {
         printWriter.newLine();
         printWriter.close();*/
 
+    }
+
+    public List<String> checkForSecureURLs(String fileName) throws IOException {
+        FileReader fr = new FileReader(fileName);
+        BufferedReader br = new BufferedReader(fr);
+        String line = "";
+        List<String> secureUrls = new ArrayList<>();
+
+
+        while((line = br.readLine()) != null){
+            if (line.split(":")[0].equals("https")){
+                secureUrls.add(line.split(" ")[0]);
+            }
+
+        }
+        return secureUrls;
     }
 
 }

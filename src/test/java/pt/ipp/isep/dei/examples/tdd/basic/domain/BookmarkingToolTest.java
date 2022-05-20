@@ -5,10 +5,7 @@ import org.apache.commons.validator.routines.UrlValidator;
 import org.junit.jupiter.api.*;
 
 import java.io.*;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -49,43 +46,13 @@ public class BookmarkingToolTest {
         fail("a disabled failing test");
     }
 
-    /**
-     * Test to ensure two positive numbers are summed correctly.<p>
-     * <p>
-     * For demonstration purposes the Arrange/Act/Assert syntax is used:<p>
-     * Arrange: one positive number (three) and another positive number (two).<p>
-     * Act: sum both numbers (three and two).<p>
-     * Assert: the result is five.
-     */
 
 
     /**
-     * Test to ensure positive and negative numbers are summed correctly.<p>
-     * <p>
-     * For demonstration purposes the Arrange/Act/Assert syntax is used:<p>
-     * Arranje a positive number (three) and a negative number (minus two)<p>
-     * Act I sum three to minus two<p>
-     * Assert the sum result should be one.
+     * Test to ensure that the file creation method actually creates a file.
+     * Creates a new file, checks for existence, and deletes the file on exiting.
+     * @throws IOException If an input or output exception occurs
      */
-   /* @Test
-    public void ensureThreePlusMinusTwoEqualsOne() {
-        //HACK: for demonstration purposes only
-        System.out.println("\t\tExecuting " + new Object() {
-        }.getClass().getEnclosingMethod().getName() + " Test");
-
-        // Arrange
-        int firsOperand = 3;
-        int secondOperand = -2;
-        int expectedResult = 1;
-        int result = 3;
-
-        // Act
-        result = new Calculator().sum(firsOperand, secondOperand);
-
-        // Assert
-        assertEquals(expectedResult, result);
-    }*/
-
     @Test
     public void ensureFileCreationCreatesNewFile() throws IOException {
         // Act
@@ -96,6 +63,13 @@ public class BookmarkingToolTest {
         file.deleteOnExit();
     }
 
+
+    /**
+     * Test to ensure that the file creation method doesn't allow duplicate files.
+     * Tries to create duplicate files, asserts equals (as the method should return the same file twice),
+     * and deletes the files on exiting.
+     * @throws IOException If an input or output exception occurs
+     */
     @Test
     public void ensureFileCreationDoesntCreateDuplicateFile() throws IOException {
         // Act
@@ -107,16 +81,30 @@ public class BookmarkingToolTest {
         file.deleteOnExit();
     }
 
+
+    /**
+     * Test to ensure that a provided URL is valid, using the Oracle Commons Validator Lib.
+     */
     @Test
-    public void ensureUrlIsValid() throws IOException {
+    public void ensureUrlIsValid() {
         assertTrue(new BookmarkingTool().validateUrl("https://github.com/SnG1205/BookmarkingTool"));
     }
 
+
+    /**
+     * Test to ensure that a provided URL is NOT valid (invalid TLD), using the Oracle Commons Validator Lib.
+     */
     @Test
-    public void ensureUrlIsNotValid() throws IOException {
+    public void ensureUrlIsNotValid() {
         assertFalse(new BookmarkingTool().validateUrl("https://github.con"));
     }
 
+
+    /**
+     * Test to ensure that a provided URL is added to the provided file. If the provided URL up to the first
+     * regex split is present in the given file (as it should be), the test will pass.
+     * @throws IOException If an input or output exception occurs
+     */
     @Test
     public void ensureUrlIsAdded() throws IOException {
         BookmarkingTool bookmarkingTool = new BookmarkingTool();
@@ -139,6 +127,13 @@ public class BookmarkingToolTest {
         assertTrue(assertion);
     }
 
+
+    // ToDo: Refactor for more clarity
+    /**
+     * Test to ensure that a URL that has not been added doesn't show up in the search. This test attempts to add a baeldung.com URL
+     * using a different domain's tag. It then checks for the hltv domain, and passes if it doesn't find it.
+     * @throws IOException If an input or output exception occurs
+     */
     @Test
     public void ensureNotBookmarkedUrlReturnsFalse() throws IOException {
         BookmarkingTool bookmarkingTool = new BookmarkingTool();
@@ -162,6 +157,12 @@ public class BookmarkingToolTest {
         assertFalse(assertion);
     }
 
+
+    /**
+     * This test ensures that a new URL is properly added to a RandomAccessFile.
+     * It was added to increase Code Coverage.
+     * @throws IOException If an input or output exception occurs
+     */
     @Test
     @Description("Added to Increase Code Coverage")
     public void EnsureNewUrlGetsAdded() throws IOException {
@@ -197,6 +198,11 @@ public class BookmarkingToolTest {
     }
 
 
+    /**
+     * This test ensures that a tag provided alongside an URL is properly added. It creates a file, adds URL + tag,
+     * and then checks the split lines (URL and tag respectively) to match the ones added.
+     * @throws IOException If an input or output exception occurs
+     */
     @Test
     public void EnsureThatTagIsAdded() throws IOException {
         BookmarkingTool bookmarkingTool = new BookmarkingTool();
@@ -223,6 +229,14 @@ public class BookmarkingToolTest {
         assertTrue(assertion);
     }
 
+
+    // ToDo: Rewrite test, momentarily it doesn't actually test anything?
+    /**
+     * This test ensures that the right tag (belonging to the right domain) is used when adding an URL.
+     * It creates a file, adds a URL with a tag belonging to another domain, and then checks for a *correct*
+     * set of URL + tag (correlating URL and domain tag).
+     * @throws IOException If an input or output exception occurs
+     */
     @Test
     public void EnsureThatTheRightTagIsAdded() throws IOException {
         BookmarkingTool bookmarkingTool = new BookmarkingTool();
@@ -249,6 +263,13 @@ public class BookmarkingToolTest {
         assertFalse(assertion);
     }
 
+
+    /**
+     * This test ensures that duplicate URLs added to a file are properly detected and deleted.
+     * It creates a file, adds a URL three times (once with a different tag), and then
+     * checks the count of the given URL in the file. If the "no duplicates" expectation is met, the test passes.
+     * @throws IOException If an input or output exception occurs
+     */
     @Test
     public void EnsureThatTheDuplicateIsFound() throws IOException {
         BookmarkingTool bookmarkingTool = new BookmarkingTool();
@@ -276,6 +297,11 @@ public class BookmarkingToolTest {
     }
 
 
+    /**
+     * This test ensures that the method to check for secure URLs properly returns all URLs using HTTPS.
+     * It creates a file, adds multiple URLs to it, filters for secure URLs and compares them to the expected output.
+     * @throws IOException If an input or output exception occurs
+     */
     @Test
     public void EnsureThatSecureUrlsAreListedCorrectly() throws IOException {
         BookmarkingTool bookmarkingTool = new BookmarkingTool();
@@ -299,6 +325,12 @@ public class BookmarkingToolTest {
     }
 
 
+    /**
+     * This test ensures that the filter by keyword/tag method properly returns all URLs using the specified tag.
+     * It creates a file, adds multiple URLs using different tags, and filters by one tag.
+     * Then it compares an expected output list to actual output list.
+     * @throws IOException If an input or output exception occurs
+     */
     @Test
     public void EnsureThatFilterWorksCorrectly() throws IOException {
         BookmarkingTool bookmarkingTool = new BookmarkingTool();

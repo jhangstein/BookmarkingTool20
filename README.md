@@ -6,49 +6,26 @@
 - Check URL for validity
 - Add  URL to created File
 
+
+## Tag URL by word
+
+- Add parameter "tag" to "addUrl" method, so that this tag appears after URL in .txt file
   
-## Maven goals
-### Run the unit tests
-```
-mvn clean test
-```
+### Tests
+1. Ensure that the tag is assigned to a URL.
+2. Ensure that the right tag is assigned to a URL. In case another tag was assigned, test should fail.
 
-### Generate javadoc for the source code
-```
-mvn javadoc:javadoc
-```
+## Duplicate Detection
+-If given URL is duplicate of the one that already exists, it should not be added to the list.
 
-### Generate javadoc for the test code
-```
-mvn javadoc:test-javadoc
-```
 
-### Generate Jacoco source code coverage report
-```
-mvn test jacoco:report
-```
+## Secure URLs
+- Read from file line by line, if URL contains "https", then it is secure.
+- Add Secure file to a List.
+- Return List.
 
-### Check if thresholds limits are achieved
-```
-mvn test jacoco:check
-```
-
-### Generates a PIT Mutation coverage report to target/pit-reports/YYYYMMDDHHMI
-```
-mvn org.pitest:pitest-maven:mutationCoverage
-```
-
-### Generates a quicker PIT Mutation coverage report to target/pit-reports/YYYYMMDDHHMI
-```
-mvn org.pitest:pitest-maven:mutationCoverage -DwithHistory
-```
-
-### Complete example
-
-``` 
-mvn test jacoco:report org.pitest:pitest-maven:mutationCoverage -DhistoryInputFile=target/fasterPitMutationTesting-history.txt -DhistoryOutputFile=target/fasterPitMutationTesting-history.txt -Dsonar.pitest.mode=reuseReport -Dthreads=4 -DtimestampedReports=false
-```
-## Jacoco dependencies
-* https://github.com/pitest/pitest-junit5-plugin
-  - https://mvnrepository.com/artifact/org.pitest/pitest-junit5-plugin
-    - required to work with JUnit5
+## Filtering Bookmarks
+- Take a keyword as a parameter.
+- Read from file line by line, if URL contains the keyword.
+- Add this URL to a List.
+- Return List.

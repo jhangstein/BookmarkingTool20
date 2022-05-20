@@ -1,0 +1,7 @@
+https://www.hltv.org/ - hltv
+https://www.baeldung.com/java-write-to-file - baeldung
+https://github.com/SnG1205/BookmarkingTool - different tag
+http://info.cern.ch/ - cern
+https://github.com/ - github
+https://github.com/issues - github
+https://github.com/pulls - github

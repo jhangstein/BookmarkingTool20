@@ -1,12 +1,8 @@
 package pt.ipp.isep.dei.examples.tdd.basic.domain;
 
 import java.io.*;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +11,9 @@ import org.apache.commons.io.*;
 
 
 /**
- * Calculator class.
- * This class is very simple in order to demonstrate how to build test cases for Unit Testing.
+ * BookmarkingTool class.
+ * This class provides functionalities to create bookmarking files, validate URLs and adding them,
+ * check for protocols used, group the URLs by keyword, and filter them by keyword.
  */
 public class BookmarkingTool {
 
@@ -25,9 +22,16 @@ public class BookmarkingTool {
     Path path = Paths.get("solvingissues.txt");*/
 
 
-    public BookmarkingTool() throws IOException {
+    public BookmarkingTool() {
     }
 
+
+    /**
+     * Method creates a new file and checks for duplicates.
+     * @param pathName      path to file and file name
+     * @return              created file
+     * @throws IOException  If an input or output exception occurs
+     */
     public File createFile(String pathName) throws IOException {
         File fileToCreate = new File(pathName);
         if (fileToCreate.createNewFile()) {
@@ -40,13 +44,27 @@ public class BookmarkingTool {
     }
 
 
+    /**
+     * Method validates provided URL by utilizing URLValidator Lib.
+     * @param url   provided URL String to validate
+     * @return      bool whether URL is valid or not
+     */
     public boolean validateUrl(String url){
         UrlValidator urlValidator = new UrlValidator();
 
         return urlValidator.isValid(url);
     }
 
-    public void  addURL(String url, String fileName, String tag) throws MalformedURLException, IOException {
+
+    /**
+     * Method checks for HTTP/S protocol, and adds provided URL + Tag to the provided file
+     * if it isn't already present in the given file.
+     * @param url           URL to add to file
+     * @param fileName      file path to add content to
+     * @param tag           Tag to append to URL
+     * @throws IOException  If an input or output exception occurs
+     */
+    public void  addURL(String url, String fileName, String tag) throws IOException {
         URL urlToSave = new URL(url);
         int count = 0;
 
@@ -73,6 +91,13 @@ public class BookmarkingTool {
 
     }
 
+
+    /**
+     * Method checks for secure URLs (using HTTPS) and appends them to a list.
+     * @param fileName      file path to read from
+     * @return              List with all secure URLs from provided file
+     * @throws IOException  If an input or output exception occurs
+     */
     public List<String> checkForSecureURLs(String fileName) throws IOException {
         FileReader fr = new FileReader(fileName);
         BufferedReader br = new BufferedReader(fr);
@@ -89,6 +114,14 @@ public class BookmarkingTool {
         return secureUrls;
     }
 
+
+    /**
+     * Method filters URLs by a provided keyword/tag.
+     * @param fileName      file path to read from
+     * @param keyword       provided keyword/tag to filter by
+     * @return              List with URLs filtered by keyword/tag
+     * @throws IOException  If an input or output exception occurs
+     */
     public List<String> filterURLs(String fileName, String keyword) throws IOException {
         FileReader fr = new FileReader(fileName);
         BufferedReader br = new BufferedReader(fr);

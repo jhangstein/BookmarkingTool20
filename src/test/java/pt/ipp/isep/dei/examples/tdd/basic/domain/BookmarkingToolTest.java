@@ -298,4 +298,31 @@ public class BookmarkingToolTest {
 
     }
 
+
+    @Test
+    public void EnsureThatFilterWorksCorrectly() throws IOException {
+        BookmarkingTool bookmarkingTool = new BookmarkingTool();
+
+
+        File file = new BookmarkingTool().createFile("testFilterByWord.txt");
+        bookmarkingTool.addURL("https://www.hltv.org/", "testFilterByWord.txt", "hltv");
+        bookmarkingTool.addURL("https://www.baeldung.com/java-write-to-file", "testFilterByWord.txt", "baeldung");
+        bookmarkingTool.addURL("https://github.com/SnG1205/BookmarkingTool", "testFilterByWord.txt", "different tag");
+        bookmarkingTool.addURL("http://info.cern.ch/", "testFilterByWord.txt", "cern");
+        bookmarkingTool.addURL("https://github.com/",  "testFilterByWord.txt", "github");
+        bookmarkingTool.addURL("https://github.com/issues",  "testFilterByWord.txt", "github");
+        bookmarkingTool.addURL("https://github.com/pulls",  "testFilterByWord.txt", "github");
+
+        List<String> secureList = bookmarkingTool.filterURLs("testFilterByWord.txt", "github");
+
+        List<String> expectedList = new ArrayList<>();
+        expectedList.add("https://github.com/SnG1205/BookmarkingTool");
+        expectedList.add("https://github.com/");
+        expectedList.add("https://github.com/issues");
+        expectedList.add("https://github.com/pulls");
+
+        assertEquals(secureList, expectedList);
+
+    }
+
 }

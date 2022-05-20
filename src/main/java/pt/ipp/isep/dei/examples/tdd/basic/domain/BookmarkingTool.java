@@ -89,4 +89,20 @@ public class BookmarkingTool {
         return secureUrls;
     }
 
+    public List<String> filterURLs(String fileName, String keyword) throws IOException {
+        FileReader fr = new FileReader(fileName);
+        BufferedReader br = new BufferedReader(fr);
+        String line = "";
+        List<String> filteredUrls = new ArrayList<>();
+
+
+        while((line = br.readLine()) != null){
+            if (line.split("/")[2].contains(keyword)){
+                filteredUrls.add(line.split(" ")[0]);
+            }
+
+        }
+        return filteredUrls;
+    }
+
 }

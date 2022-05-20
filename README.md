@@ -23,3 +23,9 @@
 -Read from file line by line, if URL contains "https", then it is secure.
 -Add Secure file to a List.
 -Return List.
+
+## Filtering Bookmarks
+-Take a keyword as a parameter.
+-Read from file line by line, if URL contains the keyword.
+-Add this URL to a List.
+-Return List.

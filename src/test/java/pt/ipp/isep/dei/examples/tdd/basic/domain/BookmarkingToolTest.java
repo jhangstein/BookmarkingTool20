@@ -294,6 +294,7 @@ public class BookmarkingToolTest {
      * @throws IOException If an input or output exception occurs
      */
     @Test
+    @Disabled
     public void EnsureThatTheDuplicateIsFound() throws IOException {
         BookmarkingTool bookmarkingTool = new BookmarkingTool();
 

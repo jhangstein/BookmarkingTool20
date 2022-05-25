@@ -87,7 +87,15 @@ public class BookmarkingToolTest {
      */
     @Test
     public void ensureUrlIsValid() {
-        assertTrue(new BookmarkingTool().validateUrl("https://github.com/SnG1205/BookmarkingTool"));
+        // Arrange
+        BookmarkingTool bt = new BookmarkingTool();
+        boolean valid;
+
+        // Act
+        valid = bt.validateUrl("https://github.com/SnG1205/BookmarkingTool");
+
+        // Assert
+        assertTrue(valid);
     }
 
 
@@ -96,7 +104,15 @@ public class BookmarkingToolTest {
      */
     @Test
     public void ensureUrlIsNotValid() {
-        assertFalse(new BookmarkingTool().validateUrl("https://github.con"));
+        // Arrange
+        BookmarkingTool bt = new BookmarkingTool();
+        boolean valid;
+
+        // Act
+        valid = bt.validateUrl("https://github.con");
+
+        // Assert
+        assertFalse(valid);
     }
 
 
@@ -107,23 +123,26 @@ public class BookmarkingToolTest {
      */
     @Test
     public void ensureUrlIsAdded() throws IOException {
-        BookmarkingTool bookmarkingTool = new BookmarkingTool();
 
+        // Arrange
+        BookmarkingTool bookmarkingTool = new BookmarkingTool();
         String url = "https://github.com/SnG1205/BookmarkingTool";
         boolean assertion = false;
-
         File file = new BookmarkingTool().createFile("testAdd.txt");
+
+        // Act
         bookmarkingTool.addURL(url, "testAdd.txt", "github");
         FileReader fr = new FileReader(file);
         BufferedReader br = new BufferedReader(fr);
         String line = "";
-
 
         while((line = br.readLine()) != null){
             if (line.split(" ")[0].equals(url)){
                 assertion = true;
             }
         }
+
+        // Assert
         assertTrue(assertion);
     }
 
@@ -136,24 +155,26 @@ public class BookmarkingToolTest {
      */
     @Test
     public void ensureNotBookmarkedUrlReturnsFalse() throws IOException {
+        // Arrange
         BookmarkingTool bookmarkingTool = new BookmarkingTool();
-
         String url = "https://www.baeldung.com/java-write-to-file";
         String wrongUrl = "https://www.hltv.org/";
         boolean assertion = false;
-
         File file = new BookmarkingTool().createFile("testAdd.txt");
+
+        // Act
         bookmarkingTool.addURL(url, "testAdd.txt", "hltv");
         FileReader fr = new FileReader(file);
         BufferedReader br = new BufferedReader(fr);
         String line = "";
-
 
         while((line = br.readLine()) != null){
             if (line.split(" ")[0].equals(wrongUrl)){
                 assertion = true;
             }
         }
+
+        // Assert
         assertFalse(assertion);
     }
 
@@ -166,23 +187,25 @@ public class BookmarkingToolTest {
     @Test
     @Description("Added to Increase Code Coverage")
     public void EnsureNewUrlGetsAdded() throws IOException {
+        // Arrange
         BookmarkingTool bookmarkingTool = new BookmarkingTool();
-
         String url = "https://www.javatpoint.com/how-to-remove-last-character-from-string-in-java";
         boolean assertion = false;
-
         File file = new BookmarkingTool().createFile("testAdd.txt");
+
+        // Act
         bookmarkingTool.addURL(url, "testAdd.txt", "javatpoint");
         FileReader fr = new FileReader(file);
         BufferedReader br = new BufferedReader(fr);
         String line = "";
-
 
         while((line = br.readLine()) != null){
             if (line.split(" ")[0].equals(url)){
                 assertion = true;
             }
         }
+
+        // Assert
         assertTrue(assertion);
 
         RandomAccessFile f = new RandomAccessFile("testAdd.txt", "rw");

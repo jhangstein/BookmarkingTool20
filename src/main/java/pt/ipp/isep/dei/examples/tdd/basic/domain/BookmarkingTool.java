@@ -40,7 +40,7 @@ public class BookmarkingTool {
 
 
     public void removeBookmark(String URL){
-        throw new UnsupportedOperationException();
+        allBookmarks.removeIf(bm -> bm.getURL().equals(URL));
     }
 
 

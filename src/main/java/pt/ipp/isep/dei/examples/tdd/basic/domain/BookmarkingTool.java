@@ -1,5 +1,6 @@
 package pt.ipp.isep.dei.examples.tdd.basic.domain;
 
+import java.awt.print.Book;
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -35,6 +36,11 @@ public class BookmarkingTool {
             bm.increaseRating();
             allBookmarks.add(bm);
         }
+    }
+
+
+    public void removeBookmark(String URL){
+        throw new UnsupportedOperationException();
     }
 
 

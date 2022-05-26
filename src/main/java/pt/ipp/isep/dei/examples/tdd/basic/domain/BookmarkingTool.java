@@ -20,16 +20,15 @@ public class BookmarkingTool {
     List<Bookmark> allBookmarks = new ArrayList<>();
 
 
-
-    /*FileWriter fileWriter = new FileWriter("solvingissues.txt");
-    PrintWriter printWriter = new PrintWriter(fileWriter, true);
-    Path path = Paths.get("solvingissues.txt");*/
-
-
     public BookmarkingTool() {
     }
 
 
+    /**
+     * Method adds a bookmark to the tool if the provided URL is valid and it isn't already added.
+     * If it isn't already in the tool, the bookmark gets added and its rating set to one.
+     * @param bm    Bookmark to be added
+     */
     public void addBookmark(Bookmark bm){
         UrlValidator validator = new UrlValidator();
         if (validator.isValid(bm.getURL()) && checkForDuplicate(bm)){
@@ -39,6 +38,12 @@ public class BookmarkingTool {
     }
 
 
+    /**
+     * Method checks for duplicate bookmarks in the tool. If it finds a duplicate, it increases that bookmarks
+     * rating by one.
+     * @param bm    Bookmark to be checked for duplicate
+     * @return      True if no duplicate can be found, false if one is found
+     */
     public boolean checkForDuplicate(Bookmark bm){
         // Not doing it with .contains() function because of object equality
         for (Bookmark bookmark: allBookmarks){
@@ -50,6 +55,11 @@ public class BookmarkingTool {
         return true;
     }
 
+
+    /**
+     * Method gets all bookmark's URLs using the HTTPS protocol.
+     * @return  count of secure URLs using HTTPS
+     */
     public int getSecureUrlCount(){
         int count = 0;
         for (Bookmark bm: allBookmarks){
@@ -61,6 +71,11 @@ public class BookmarkingTool {
     }
 
 
+    /**
+     * Method filters the tool by provided keyword, and groups matching items in a new list.
+     * @param tag   keyword/tag to filter by
+     * @return      list with all associated bookmarks
+     */
     public List<Bookmark> filterByKeyword(String tag){
         List<Bookmark> keywordList = new ArrayList<>();
 
@@ -79,12 +94,7 @@ public class BookmarkingTool {
 
 
 
-    /**
-     * Method creates a new file and checks for duplicates.
-     * @param pathName      path to file and file name
-     * @return              created file
-     * @throws IOException  If an input or output exception occurs
-     */
+/*    *//*
     public File createFile(String pathName) throws IOException {
         File fileToCreate = new File(pathName);
         if (fileToCreate.createNewFile()) {
@@ -99,11 +109,7 @@ public class BookmarkingTool {
     }
 
 
-    /**
-     * Method validates provided URL by utilizing URLValidator Lib.
-     * @param url   provided URL String to validate
-     * @return      bool whether URL is valid or not
-     */
+    *//*
     public boolean validateUrl(String url){
         UrlValidator urlValidator = new UrlValidator();
 
@@ -111,14 +117,7 @@ public class BookmarkingTool {
     }
 
 
-    /**
-     * Method checks for HTTP/S protocol, and adds provided URL + Tag to the provided file
-     * if it isn't already present in the given file.
-     * @param url           URL to add to file
-     * @param fileName      file path to add content to
-     * @param tag           Tag to append to URL
-     * @throws IOException  If an input or output exception occurs
-     */
+    *//*
     public void  addURL(String url, String fileName, String tag) throws IOException {
         URL urlToSave = new URL(url);
         int count = 0;
@@ -140,19 +139,14 @@ public class BookmarkingTool {
 
 
 
-        /*printWriter.write(url + '\n');
+        *//*printWriter.write(url + '\n');
         printWriter.newLine();
-        printWriter.close();*/
+        printWriter.close();*//*
 
     }
 
 
-    /**
-     * Method checks for secure URLs (using HTTPS) and appends them to a list.
-     * @param fileName      file path to read from
-     * @return              List with all secure URLs from provided file
-     * @throws IOException  If an input or output exception occurs
-     */
+    *//*
     public List<String> checkForSecureURLs(String fileName) throws IOException {
         FileReader fr = new FileReader(fileName);
         BufferedReader br = new BufferedReader(fr);
@@ -170,13 +164,7 @@ public class BookmarkingTool {
     }
 
 
-    /**
-     * Method filters URLs by a provided keyword/tag.
-     * @param fileName      file path to read from
-     * @param keyword       provided keyword/tag to filter by
-     * @return              List with URLs filtered by keyword/tag
-     * @throws IOException  If an input or output exception occurs
-     */
+    *//*
     public List<String> filterURLs(String fileName, String keyword) throws IOException {
         FileReader fr = new FileReader(fileName);
         BufferedReader br = new BufferedReader(fr);
@@ -191,6 +179,6 @@ public class BookmarkingTool {
 
         }
         return filteredUrls;
-    }
+    }*/
 
 }

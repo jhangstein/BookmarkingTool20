@@ -152,7 +152,7 @@ public class BookmarkingToolTest {
 
     //ToDo: Delete old tests
 
-    @BeforeAll
+    /*@BeforeAll
     @Disabled
     public static void classSetUp() {
         //HACK: for demonstration purposes only
@@ -192,11 +192,11 @@ public class BookmarkingToolTest {
 
 
 
-    /**
+    *//**
      * Test to ensure that the file creation method actually creates a file.
      * Creates a new file, checks for existence, and deletes the file on exiting.
      * @throws IOException If an input or output exception occurs
-     */
+     *//*
     @Test
     @Disabled
     public void ensureFileCreationCreatesNewFile() throws IOException {
@@ -209,12 +209,12 @@ public class BookmarkingToolTest {
     }
 
 
-    /**
+    *//**
      * Test to ensure that the file creation method doesn't allow duplicate files.
      * Tries to create duplicate files, asserts equals (as the method should return the same file twice),
      * and deletes the files on exiting.
      * @throws IOException If an input or output exception occurs
-     */
+     *//*
     @Test
     @Disabled
     public void ensureFileCreationDoesntCreateDuplicateFile() throws IOException {
@@ -228,9 +228,9 @@ public class BookmarkingToolTest {
     }
 
 
-    /**
+    *//**
      * Test to ensure that a provided URL is valid, using the Oracle Commons Validator Lib.
-     */
+     *//*
     @Test
     @Disabled
     public void ensureUrlIsValid() {
@@ -246,9 +246,9 @@ public class BookmarkingToolTest {
     }
 
 
-    /**
+    *//**
      * Test to ensure that a provided URL is NOT valid (invalid TLD), using the Oracle Commons Validator Lib.
-     */
+     *//*
     @Test
     @Disabled
     public void ensureUrlIsNotValid() {
@@ -264,11 +264,11 @@ public class BookmarkingToolTest {
     }
 
 
-    /**
+    *//**
      * Test to ensure that a provided URL is added to the provided file. If the provided URL up to the first
      * regex split is present in the given file (as it should be), the test will pass.
      * @throws IOException If an input or output exception occurs
-     */
+     *//*
     @Test
     @Disabled
     public void ensureUrlIsAdded() throws IOException {
@@ -297,11 +297,11 @@ public class BookmarkingToolTest {
 
 
     // ToDo: Refactor for more clarity
-    /**
+    *//**
      * Test to ensure that a URL that has not been added doesn't show up in the search. This test attempts to add a baeldung.com URL
      * using a different domain's tag. It then checks for the hltv domain, and passes if it doesn't find it.
      * @throws IOException If an input or output exception occurs
-     */
+     *//*
     @Test
     @Disabled
     public void ensureNotBookmarkedUrlReturnsFalse() throws IOException {
@@ -329,11 +329,11 @@ public class BookmarkingToolTest {
     }
 
 
-    /**
+    *//**
      * This test ensures that a new URL is properly added to a RandomAccessFile.
      * It was added to increase Code Coverage.
      * @throws IOException If an input or output exception occurs
-     */
+     *//*
     @Test
     @Disabled
     //@Description("Added to Increase Code Coverage")
@@ -372,11 +372,11 @@ public class BookmarkingToolTest {
     }
 
 
-    /**
+    *//**
      * This test ensures that a tag provided alongside an URL is properly added. It creates a file, adds URL + tag,
      * and then checks the split lines (URL and tag respectively) to match the ones added.
      * @throws IOException If an input or output exception occurs
-     */
+     *//*
     @Test
     @Disabled
     public void EnsureThatTagIsAdded() throws IOException {
@@ -406,12 +406,12 @@ public class BookmarkingToolTest {
 
 
     // ToDo: Rewrite test, momentarily it doesn't actually test anything?
-    /**
+    *//**
      * This test ensures that the right tag (belonging to the right domain) is used when adding an URL.
      * It creates a file, adds a URL with a tag belonging to another domain, and then checks for a *correct*
      * set of URL + tag (correlating URL and domain tag).
      * @throws IOException If an input or output exception occurs
-     */
+     *//*
     @Test
     @Disabled
     public void EnsureThatTheRightTagIsAdded() throws IOException {
@@ -440,12 +440,12 @@ public class BookmarkingToolTest {
     }
 
 
-    /**
+    *//**
      * This test ensures that duplicate URLs added to a file are properly detected and deleted.
      * It creates a file, adds a URL three times (once with a different tag), and then
      * checks the count of the given URL in the file. If the "no duplicates" expectation is met, the test passes.
      * @throws IOException If an input or output exception occurs
-     */
+     *//*
     @Test
     @Disabled
     public void EnsureThatTheDuplicateIsFound() throws IOException {
@@ -474,11 +474,11 @@ public class BookmarkingToolTest {
     }
 
 
-    /**
+    *//**
      * This test ensures that the method to check for secure URLs properly returns all URLs using HTTPS.
      * It creates a file, adds multiple URLs to it, filters for secure URLs and compares them to the expected output.
      * @throws IOException If an input or output exception occurs
-     */
+     *//*
     @Test
     @Disabled
     public void EnsureThatSecureUrlsAreListedCorrectly() throws IOException {
@@ -503,12 +503,12 @@ public class BookmarkingToolTest {
     }
 
 
-    /**
+    *//**
      * This test ensures that the filter by keyword/tag method properly returns all URLs using the specified tag.
      * It creates a file, adds multiple URLs using different tags, and filters by one tag.
      * Then it compares an expected output list to actual output list.
      * @throws IOException If an input or output exception occurs
-     */
+     *//*
     @Test
     @Disabled
     public void EnsureThatFilterWorksCorrectly() throws IOException {
@@ -535,5 +535,5 @@ public class BookmarkingToolTest {
         assertEquals(secureList, expectedList);
 
     }
-
+*/
 }

@@ -1,6 +1,6 @@
 package pt.ipp.isep.dei.examples.tdd.basic.domain;
 
-import jdk.jfr.Description;
+//import jdk.jfr.Description;
 import org.apache.commons.validator.routines.UrlValidator;
 import org.junit.jupiter.api.*;
 
@@ -185,7 +185,7 @@ public class BookmarkingToolTest {
      * @throws IOException If an input or output exception occurs
      */
     @Test
-    @Description("Added to Increase Code Coverage")
+    //@Description("Added to Increase Code Coverage")
     public void EnsureNewUrlGetsAdded() throws IOException {
         // Arrange
         BookmarkingTool bookmarkingTool = new BookmarkingTool();
@@ -294,6 +294,7 @@ public class BookmarkingToolTest {
      * @throws IOException If an input or output exception occurs
      */
     @Test
+    @Disabled
     public void EnsureThatTheDuplicateIsFound() throws IOException {
         BookmarkingTool bookmarkingTool = new BookmarkingTool();
 

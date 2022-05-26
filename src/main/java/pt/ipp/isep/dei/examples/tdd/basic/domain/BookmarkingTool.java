@@ -35,8 +35,10 @@ public class BookmarkingTool {
     public File createFile(String pathName) throws IOException {
         File fileToCreate = new File(pathName);
         if (fileToCreate.createNewFile()) {
+           //TODO delete the following line
             System.out.println("File created: ");
         } else {
+            //TODO delete the following line
             System.out.println("File already exists.");
         }
 

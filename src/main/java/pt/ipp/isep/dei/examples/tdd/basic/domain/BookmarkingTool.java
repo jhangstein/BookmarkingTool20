@@ -62,7 +62,14 @@ public class BookmarkingTool {
 
 
     public List<Bookmark> filterByKeyword(String tag){
-        throw new UnsupportedOperationException();
+        List<Bookmark> keywordList = new ArrayList<>();
+
+        for (Bookmark bm: allBookmarks){
+            if (bm.getTag().equals(tag)){
+                keywordList.add(bm);
+            }
+        }
+        return keywordList;
     }
 
 

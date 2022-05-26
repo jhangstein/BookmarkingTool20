@@ -9,11 +9,13 @@ public class Bookmark {
 
     public Bookmark (String URL){
         this.URL = URL;
+        this.rating = 0;
     }
 
     public Bookmark (String URL, String tag){
         this.URL = URL;
         this.tag = tag;
+        this.rating = 0;
     }
 
 
@@ -26,6 +28,10 @@ public class Bookmark {
     }
 
     public int getRating(){
-        throw new UnsupportedOperationException();
+        return this.rating;
+    }
+
+    public void increaseRating() {
+        this.rating++;
     }
 }

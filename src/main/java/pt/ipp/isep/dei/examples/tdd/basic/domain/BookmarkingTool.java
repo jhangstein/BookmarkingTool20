@@ -94,6 +94,11 @@ public class BookmarkingTool {
     }
 
 
+    public void removeTag(String URL){
+        throw new UnsupportedOperationException();
+    }
+
+
 
 
 

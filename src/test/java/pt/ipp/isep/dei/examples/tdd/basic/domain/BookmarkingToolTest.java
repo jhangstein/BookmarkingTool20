@@ -163,6 +163,36 @@ public class BookmarkingToolTest {
     }
 
 
+    @Test
+    public void ensureTagsAreProperlyDeleted(){
+        String URL1 = "https://github.com";
+        String URL2 = "https://facebook.com";
+        String URL3 = "http://test.com";
+        String tag = "favorites";
+        boolean result = false;
+
+        BookmarkingTool bt = new BookmarkingTool();
+        Bookmark bm1 = new Bookmark(URL1, tag);
+        Bookmark bm2 = new Bookmark(URL2, tag);
+        Bookmark bm3 = new Bookmark(URL3, tag);
+        bt.addBookmark(bm1);
+        bt.addBookmark(bm2);
+        bt.addBookmark(bm3);
+
+        bt.removeTag("https://facebook.com");
+
+        List<Bookmark> filteredList = bt.filterByKeyword("favorites");
+        for (Bookmark bm: filteredList){
+            if (bm.getURL().equals("https://facebook.com")){
+                result = true;
+                break;
+            }
+        }
+
+        assertFalse(result);
+    }
+
+
 
 
 

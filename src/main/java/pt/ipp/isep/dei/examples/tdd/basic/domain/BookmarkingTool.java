@@ -50,6 +50,10 @@ public class BookmarkingTool {
         return true;
     }
 
+    public int getSecureUrlCount(){
+        throw new UnsupportedOperationException();
+    }
+
 
 
 

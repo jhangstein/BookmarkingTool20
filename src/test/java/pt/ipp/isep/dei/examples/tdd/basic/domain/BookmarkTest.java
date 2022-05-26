@@ -2,6 +2,9 @@ package pt.ipp.isep.dei.examples.tdd.basic.domain;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BookmarkTest {
@@ -26,5 +29,20 @@ class BookmarkTest {
         String compare = bm.getTag();
 
         assertEquals(tag, compare);
+    }
+
+
+    @Test
+    public void ensureDateIsAdded(){
+        String URL = "https://github.com";
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        Bookmark bm = new Bookmark(URL);
+
+        String expected = dtf.format(now);
+        String actual = bm.getDate();
+
+        assertEquals(expected, actual);
     }
 }

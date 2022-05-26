@@ -39,4 +39,8 @@ public class Bookmark {
     public void increaseRating() {
         this.rating++;
     }
+
+    public String getDate() {
+        throw new UnsupportedOperationException();
+    }
 }

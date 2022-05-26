@@ -6,10 +6,11 @@ public class Bookmark {
 
 
     public Bookmark (String URL){
+        this.URL = URL;
     }
 
 
     public String getURL() {
-        throw new UnsupportedOperationException();
+        return this.URL;
     }
 }

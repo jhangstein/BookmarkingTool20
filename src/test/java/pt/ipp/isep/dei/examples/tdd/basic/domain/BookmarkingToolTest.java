@@ -110,6 +110,30 @@ public class BookmarkingToolTest {
     }
 
 
+    @Test
+    public void ensureFilteringReturnsEveryExpectedBookmark(){
+        String URL1 = "https://github.com";
+        String URL2 = "https://facebook.com";
+        String URL3 = "http://test.com";
+        String tag = "favorites";
+        String tag2 = "boomer";
+        int expected = 2;
+        int actual = 0;
+
+        BookmarkingTool bt = new BookmarkingTool();
+        Bookmark bm1 = new Bookmark(URL1, tag);
+        Bookmark bm2 = new Bookmark(URL2, tag2);
+        Bookmark bm3 = new Bookmark(URL3, tag);
+        bt.addBookmark(bm1);
+        bt.addBookmark(bm2);
+        bt.addBookmark(bm3);
+
+        actual = bt.filterByKeyword("favorites").size();
+
+        assertEquals(expected, actual);
+    }
+
+
 
 
 

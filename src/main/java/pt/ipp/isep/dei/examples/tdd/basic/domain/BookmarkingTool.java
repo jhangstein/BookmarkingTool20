@@ -51,7 +51,13 @@ public class BookmarkingTool {
     }
 
     public int getSecureUrlCount(){
-        throw new UnsupportedOperationException();
+        int count = 0;
+        for (Bookmark bm: allBookmarks){
+            if (bm.getURL().contains("https")) {
+                count++;
+            }
+        }
+        return count;
     }
 
 

@@ -11,7 +11,8 @@ public class Bookmark {
     }
 
     public Bookmark (String URL, String tag){
-
+        this.URL = URL;
+        this.tag = tag;
     }
 
 
@@ -20,6 +21,6 @@ public class Bookmark {
     }
 
     public String getTag(){
-        throw new UnsupportedOperationException();
+        return this.tag;
     }
 }

@@ -1,4 +1,12 @@
 # Bookmarking Tool
+Switching to an OOP approach, redoing the project.
+
+Starting with User Story 1: As a user I want to bookmark an URL
+
+
+
+
+
 
 ## Bookmark URL
 

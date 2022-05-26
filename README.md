@@ -15,6 +15,12 @@ User Story 4: As a user I want to know how many of my bookmarks are secure URLs
 
 User Story 6: As a user I want to be able to filter bookmarks by one keyword
 
+**User Story 7: !!!ToDo!!!**
+
+**User Story 8: !!!ToDo!!!**
+
+User Story 9: As a user I want to remove a URL bookmark
+
 
 
 

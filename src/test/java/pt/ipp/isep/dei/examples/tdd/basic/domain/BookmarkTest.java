@@ -16,4 +16,15 @@ class BookmarkTest {
         assertEquals(bookmark, compare);
     }
 
+
+    @Test
+    public void createBookmarkWithTag(){
+        String URL = "https://github.com";
+        String tag = "favorites";
+        Bookmark bm = new Bookmark(URL, tag);
+
+        String compare = bm.getTag();
+
+        assertEquals(tag, compare);
+    }
 }

@@ -42,6 +42,30 @@ public class BookmarkingToolTest {
         assertFalse(valid);
     }
 
+    @Test
+    public void ensureNoDuplicatesExistInBookmarkingTool(){
+        String URL1 = "https://github.com";
+        String URL2 = "https://github.com";
+        String tag = "favorites";
+        int expected = 1;
+        int actual = 0;
+
+        BookmarkingTool bt = new BookmarkingTool();
+        Bookmark bm1 = new Bookmark(URL1, tag);
+        Bookmark bm2 = new Bookmark(URL2, tag);
+        bt.addBookmark(bm1);
+        bt.addBookmark(bm2);
+
+        for (Bookmark bookmark: bt.allBookmarks){
+            if (bookmark.getURL().equals("https://github.com")){
+                actual++;
+            }
+        }
+
+        assertEquals(expected, actual);
+
+    }
+
 
 
 

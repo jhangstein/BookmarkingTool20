@@ -21,6 +21,8 @@ User Story 8: As a user I want to remove a TAG from a bookmark
 
 User Story 9: As a user I want to remove a URL bookmark
 
+User Story 10: As a user I want to add a current date/time when I add a bookmark
+
 
 
 

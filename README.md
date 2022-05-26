@@ -7,6 +7,8 @@ User Story 1a: The URL must be valid
 
 User Story 2: As a user I want to be able to Tag a URL with a keyword
 
+User Story 3: As a user when I add a duplicate bookmark, I want the system to increase the rating of that bookmark, because no exact duplicates should exist
+
 
 
 

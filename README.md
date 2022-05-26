@@ -5,6 +5,8 @@ Starting with User Story 1: As a user I want to bookmark an URL
 
 User Story 1a: The URL must be valid
 
+User Story 2: As a user I want to be able to Tag a URL with a keyword
+
 
 
 

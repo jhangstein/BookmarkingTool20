@@ -16,7 +16,7 @@ public class BookmarkingToolTest {
 
     @Test
     public void ensureURLIsValid(){
-        String URL = "htt://github.com";
+        String URL = "http://github.com";
         boolean valid = false;
 
         BookmarkingTool bt = new BookmarkingTool();
@@ -26,6 +26,20 @@ public class BookmarkingToolTest {
         valid = bt.allBookmarks.contains(bm);
 
         assertTrue(valid);
+    }
+
+    @Test
+    public void ensureURLIsInvalid(){
+        String URL = "htt://github.com";
+        boolean valid = false;
+
+        BookmarkingTool bt = new BookmarkingTool();
+        Bookmark bm = new Bookmark(URL);
+        bt.addBookmark(bm);
+
+        valid = bt.allBookmarks.contains(bm);
+
+        assertFalse(valid);
     }
 
 

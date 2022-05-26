@@ -9,6 +9,7 @@ public class Bookmark {
 
     public Bookmark (String URL){
         this.URL = URL;
+        this.tag = "";
         this.rating = 0;
     }
 

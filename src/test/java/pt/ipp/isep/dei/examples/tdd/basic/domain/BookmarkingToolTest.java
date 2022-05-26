@@ -12,6 +12,41 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class BookmarkingToolTest {
 
+    // NEW TESTS (old ones will be kept around for now to reference).
+
+    @Test
+    public void ensureURLIsValid(){
+        String URL = "htt://github.com";
+        boolean valid = false;
+
+        BookmarkingTool bt = new BookmarkingTool();
+        Bookmark bm = new Bookmark(URL);
+        bt.addBookmark(bm);
+
+        valid = bt.allBookmarks.contains(bm);
+
+        assertTrue(valid);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //ToDo: Delete old tests
+
     @BeforeAll
     @Disabled
     public static void classSetUp() {

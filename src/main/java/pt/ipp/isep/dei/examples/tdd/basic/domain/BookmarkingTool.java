@@ -17,6 +17,10 @@ import org.apache.commons.io.*;
  */
 public class BookmarkingTool {
 
+    List<Bookmark> allBookmarks = new ArrayList<>();
+
+
+
     /*FileWriter fileWriter = new FileWriter("solvingissues.txt");
     PrintWriter printWriter = new PrintWriter(fileWriter, true);
     Path path = Paths.get("solvingissues.txt");*/
@@ -24,6 +28,17 @@ public class BookmarkingTool {
 
     public BookmarkingTool() {
     }
+
+
+    public void addBookmark(Bookmark bm){
+        throw new UnsupportedOperationException();
+    }
+
+
+
+
+
+
 
 
     /**

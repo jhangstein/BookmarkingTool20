@@ -95,7 +95,11 @@ public class BookmarkingTool {
 
 
     public void removeTag(String URL){
-        throw new UnsupportedOperationException();
+        for (Bookmark bm: allBookmarks){
+            if (bm.getURL().equals(URL)){
+                bm.setTag("");
+            }
+        }
     }
 
 

@@ -28,6 +28,10 @@ public class Bookmark {
         return this.tag;
     }
 
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
     public int getRating(){
         return this.rating;
     }

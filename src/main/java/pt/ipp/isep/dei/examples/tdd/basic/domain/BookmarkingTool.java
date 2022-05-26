@@ -31,7 +31,10 @@ public class BookmarkingTool {
 
 
     public void addBookmark(Bookmark bm){
-        throw new UnsupportedOperationException();
+        UrlValidator validator = new UrlValidator();
+        if (validator.isValid(bm.getURL())){
+            allBookmarks.add(bm);
+        }
     }
 
 

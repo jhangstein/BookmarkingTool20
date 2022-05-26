@@ -3,6 +3,8 @@ Switching to an OOP approach, redoing the project.
 
 Starting with User Story 1: As a user I want to bookmark an URL
 
+User Story 1a: The URL must be valid
+
 
 
 

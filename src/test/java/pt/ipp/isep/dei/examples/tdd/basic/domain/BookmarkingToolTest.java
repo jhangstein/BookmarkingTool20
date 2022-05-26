@@ -63,7 +63,26 @@ public class BookmarkingToolTest {
         }
 
         assertEquals(expected, actual);
+    }
 
+
+    @Test
+    public void ensureRatingIsIncreased(){
+        String URL1 = "https://github.com";
+        String URL2 = "https://github.com";
+        String tag = "favorites";
+        int expected = 2;
+        int actual = 0;
+
+        BookmarkingTool bt = new BookmarkingTool();
+        Bookmark bm1 = new Bookmark(URL1, tag);
+        Bookmark bm2 = new Bookmark(URL2, tag);
+        bt.addBookmark(bm1);
+        bt.addBookmark(bm2);
+
+        actual = bt.allBookmarks.get(0).getRating();
+
+        assertEquals(expected, actual);
     }
 
 

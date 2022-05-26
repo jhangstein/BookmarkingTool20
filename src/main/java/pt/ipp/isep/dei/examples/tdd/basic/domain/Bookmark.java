@@ -4,6 +4,7 @@ public class Bookmark {
 
     private String URL;
     private String tag;
+    private int rating;
 
 
     public Bookmark (String URL){
@@ -22,5 +23,9 @@ public class Bookmark {
 
     public String getTag(){
         return this.tag;
+    }
+
+    public int getRating(){
+        throw new UnsupportedOperationException();
     }
 }

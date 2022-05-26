@@ -32,9 +32,20 @@ public class BookmarkingTool {
 
     public void addBookmark(Bookmark bm){
         UrlValidator validator = new UrlValidator();
-        if (validator.isValid(bm.getURL())){
+        if (validator.isValid(bm.getURL()) && checkForDuplicate(bm)){
             allBookmarks.add(bm);
         }
+    }
+
+
+    public boolean checkForDuplicate(Bookmark bm){
+        // Not doing it with .contains() function because as of now there are two constructors, so equality isn't always the right approach
+        for (Bookmark bookmark: allBookmarks){
+            if (bookmark.getURL().equals(bm.getURL())){
+                return false;
+            }
+        }
+        return true;
     }
 
 

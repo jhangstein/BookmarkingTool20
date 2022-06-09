@@ -5,6 +5,8 @@ import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.apache.commons.validator.routines.*;
@@ -103,97 +105,8 @@ public class BookmarkingTool {
     }
 
 
-
-
-
-
-
-
-/*    *//*
-    public File createFile(String pathName) throws IOException {
-        File fileToCreate = new File(pathName);
-        if (fileToCreate.createNewFile()) {
-           //TODO delete the following line
-            System.out.println("File created: ");
-        } else {
-            //TODO delete the following line
-            System.out.println("File already exists.");
-        }
-
-        return fileToCreate;
+    public List<Bookmark> listSortedByRating(){
+        throw new UnsupportedOperationException();
     }
-
-
-    *//*
-    public boolean validateUrl(String url){
-        UrlValidator urlValidator = new UrlValidator();
-
-        return urlValidator.isValid(url);
-    }
-
-
-    *//*
-    public void  addURL(String url, String fileName, String tag) throws IOException {
-        URL urlToSave = new URL(url);
-        int count = 0;
-
-        System.out.println(urlToSave.getProtocol());
-        FileReader fr = new FileReader(fileName);
-        BufferedReader br = new BufferedReader(fr);
-        String line = "";
-
-        while((line = br.readLine()) != null){
-            if (line.split(" ")[0].equals(url)){
-                count++;
-            }
-        }
-        if (count == 0) {
-            FileUtils.writeStringToFile(
-                    new File(fileName), url + " - " + tag + '\n', StandardCharsets.UTF_8, true);
-        }
-
-
-
-        *//*printWriter.write(url + '\n');
-        printWriter.newLine();
-        printWriter.close();*//*
-
-    }
-
-
-    *//*
-    public List<String> checkForSecureURLs(String fileName) throws IOException {
-        FileReader fr = new FileReader(fileName);
-        BufferedReader br = new BufferedReader(fr);
-        String line = "";
-        List<String> secureUrls = new ArrayList<>();
-
-
-        while((line = br.readLine()) != null){
-            if (line.split(":")[0].equals("https")){
-                secureUrls.add(line.split(" ")[0]);
-            }
-
-        }
-        return secureUrls;
-    }
-
-
-    *//*
-    public List<String> filterURLs(String fileName, String keyword) throws IOException {
-        FileReader fr = new FileReader(fileName);
-        BufferedReader br = new BufferedReader(fr);
-        String line = "";
-        List<String> filteredUrls = new ArrayList<>();
-
-
-        while((line = br.readLine()) != null){
-            if (line.split("/")[2].contains(keyword)){
-                filteredUrls.add(line.split(" ")[0]);
-            }
-
-        }
-        return filteredUrls;
-    }*/
 
 }

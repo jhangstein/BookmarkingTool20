@@ -55,4 +55,8 @@ public class Bookmark {
     public String getDate() {
         return this.date;
     }
+
+    public void printBookmark(){
+        System.out.println("Rating: " + this.rating + ", URL: " + this.URL);
+    }
 }

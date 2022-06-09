@@ -109,9 +109,10 @@ public class BookmarkingTool {
         List<Bookmark> sortedList = allBookmarks;
         sortedList.sort(Comparator.comparingInt(Bookmark::getRating).reversed());
         for (Bookmark bm: allBookmarks){
-            System.out.println("Rating: " + bm.getRating() + ", URL: " + bm.getURL());
+            bm.printBookmark();
         }
         return sortedList;
     }
+
 
 }

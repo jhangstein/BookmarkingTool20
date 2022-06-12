@@ -123,7 +123,9 @@ public class BookmarkingTool {
 
 
     public List<Bookmark> listSortedByDate(){
-        throw new UnsupportedOperationException();
+        List<Bookmark> sortedList = allBookmarks;
+        sortedList.sort(Comparator.comparing(Bookmark::getDate).reversed());
+        return sortedList;
     }
 
     public List<Bookmark> getAssociatedDomains(String url) throws MalformedURLException {

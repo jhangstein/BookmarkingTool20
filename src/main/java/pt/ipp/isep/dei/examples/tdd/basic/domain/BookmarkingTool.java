@@ -2,6 +2,7 @@ package pt.ipp.isep.dei.examples.tdd.basic.domain;
 
 import java.awt.print.Book;
 import java.io.*;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -121,8 +122,17 @@ public class BookmarkingTool {
     }
 
 
-    public List<Bookmark> getAssociatedDomains(String URL){
-        throw new UnsupportedOperationException();
+    public List<Bookmark> getAssociatedDomains(String url) throws MalformedURLException {
+        List<Bookmark> associated = new ArrayList<>();
+        URL provided = new URL(url);
+        for (Bookmark bm: allBookmarks){
+            URL check = new URL(bm.getURL());
+            if (check.getHost().equals(provided.getHost())){
+                associated.add(bm);
+            }
+
+        }
+        return associated;
     }
 
 

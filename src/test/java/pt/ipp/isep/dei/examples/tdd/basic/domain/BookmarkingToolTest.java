@@ -233,7 +233,11 @@ public class BookmarkingToolTest {
         bt.addBookmark(bm4);
         bt.addBookmark(bm5);
 
-        actual = bt.getAssociatedDomains("https://test.com/associates").size();
+        try {
+            actual = bt.getAssociatedDomains("https://test.com/associates").size();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
         assertEquals(expected,actual);
 

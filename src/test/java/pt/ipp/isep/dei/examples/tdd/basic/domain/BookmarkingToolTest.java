@@ -1,18 +1,13 @@
 package pt.ipp.isep.dei.examples.tdd.basic.domain;
 
-//import jdk.jfr.Description;
-import org.apache.commons.validator.routines.UrlValidator;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
 
-import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BookmarkingToolTest {
 
-    // NEW TESTS (old ones will be kept around for now to reference).
 
     @Test
     public void ensureURLIsValid(){
@@ -44,15 +39,17 @@ public class BookmarkingToolTest {
 
     @Test
     public void ensureNoDuplicatesExistInBookmarkingTool(){
+        // Arrange
         String URL1 = "https://github.com";
         String URL2 = "https://github.com";
         String tag = "favorites";
         int expected = 1;
         int actual = 0;
-
         BookmarkingTool bt = new BookmarkingTool();
         Bookmark bm1 = new Bookmark(URL1, tag);
         Bookmark bm2 = new Bookmark(URL2, tag);
+
+        // Act
         bt.addBookmark(bm1);
         bt.addBookmark(bm2);
 
@@ -62,6 +59,7 @@ public class BookmarkingToolTest {
             }
         }
 
+        // Assert
         assertEquals(expected, actual);
     }
 
@@ -216,5 +214,28 @@ public class BookmarkingToolTest {
         actual = bt.listSortedByRating().get(2).getRating();
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void ensureBookmarksAreGroupedByDomainIfRequested(){
+        BookmarkingTool bt = new BookmarkingTool();
+        Bookmark bm1 = new Bookmark("https://test.com/");
+        Bookmark bm2 = new Bookmark("https://test.com/more");
+        Bookmark bm3 = new Bookmark("https://test.com/more/evenmore");
+        Bookmark bm4 = new Bookmark("https://test.com/login");
+        Bookmark bm5 = new Bookmark("https://google.com");
+        int expected = 4;
+        int actual = 0;
+
+        bt.addBookmark(bm1);
+        bt.addBookmark(bm2);
+        bt.addBookmark(bm3);
+        bt.addBookmark(bm4);
+        bt.addBookmark(bm5);
+
+        actual = bt.getAssociatedDomains("https://test.com/associates").size();
+
+        assertEquals(expected,actual);
+
     }
 }

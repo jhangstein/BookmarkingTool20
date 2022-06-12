@@ -121,4 +121,9 @@ public class BookmarkingTool {
     }
 
 
+    public List<Bookmark> getAssociatedDomains(String URL){
+        throw new UnsupportedOperationException();
+    }
+
+
 }

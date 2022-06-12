@@ -1,23 +1,18 @@
 package pt.ipp.isep.dei.examples.tdd.basic.domain;
 
-import java.awt.print.Book;
-import java.io.*;
+import org.apache.commons.validator.routines.UrlValidator;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import org.apache.commons.validator.routines.*;
-import org.apache.commons.io.*;
 
 
 /**
  * BookmarkingTool class.
  * This class provides functionalities to create bookmarking files, validate URLs and adding them,
- * check for protocols used, group the URLs by keyword, and filter them by keyword.
+ * check for protocols used, group the URLs by keyword, and filter them by keyword. It also
+ * adds means to sort the bookmarks and check for domain associations.
  */
 public class BookmarkingTool {
 
@@ -41,7 +36,10 @@ public class BookmarkingTool {
         }
     }
 
-
+    /**
+     * Method removes a bookmark if its URL matches the provided URL.
+     * @param URL   URL of bookmark to be deleted
+     */
     public void removeBookmark(String URL){
         for (Bookmark bm: allBookmarks){
             if (URL.equals(bm.getURL())){
@@ -101,6 +99,10 @@ public class BookmarkingTool {
     }
 
 
+    /**
+     * Method removes a tag from a provided URL.
+     * @param URL   URL of which the associated tag should be deleted
+     */
     public void removeTag(String URL){
         for (Bookmark bm: allBookmarks){
             if (bm.getURL().equals(URL)){
@@ -110,6 +112,10 @@ public class BookmarkingTool {
     }
 
 
+    /**
+     * Method sorts all bookmarks by their rating in descending order.
+     * @return  the list sorted by rating
+     */
     public List<Bookmark> listSortedByRating(){
         List<Bookmark> sortedList = allBookmarks;
         sortedList.sort(Comparator.comparingInt(Bookmark::getRating).reversed());
@@ -122,12 +128,24 @@ public class BookmarkingTool {
     }
 
 
+    /**
+     * Method sorts all bookmarks by their date from new to old.
+     * @return  the list sorted by date
+     */
     public List<Bookmark> listSortedByDate(){
         List<Bookmark> sortedList = allBookmarks;
         sortedList.sort(Comparator.comparing(Bookmark::getDate).reversed());
         return sortedList;
     }
 
+
+    /**
+     * Method gets the domain name of all bookmarks, and returns those matching the
+     * domain in the provided URL.
+     * @param url   URL of which associated domains should be found
+     * @return  list with all associated domains
+     * @throws MalformedURLException    When the URL is invalid
+     */
     public List<Bookmark> getAssociatedDomains(String url) throws MalformedURLException {
         List<Bookmark> associated = new ArrayList<>();
         URL provided = new URL(url);
@@ -140,7 +158,4 @@ public class BookmarkingTool {
         }
         return associated;
     }
-
-
-
 }

@@ -56,7 +56,8 @@ public class Bookmark {
         return this.date;
     }
 
-    public void printBookmark(){
+    // removed, as this only serves in the CLI application
+    /*public void printBookmark(){
         System.out.println("Rating: " + this.rating + ", URL: " + this.URL);
-    }
+    }*/
 }

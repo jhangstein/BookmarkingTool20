@@ -42,7 +42,12 @@ public class BookmarkingTool {
 
 
     public void removeBookmark(String URL){
-        allBookmarks.removeIf(bm -> bm.getURL().equals(URL));
+        for (Bookmark bm: allBookmarks){
+            if (URL.equals(bm.getURL())){
+                allBookmarks.remove(bm);
+            }
+        }
+        //allBookmarks.removeIf(bm -> bm.getURL().equals(URL));
     }
 
 
@@ -53,7 +58,6 @@ public class BookmarkingTool {
      * @return      True if no duplicate can be found, false if one is found
      */
     public boolean checkForDuplicate(Bookmark bm){
-        // Not doing it with .contains() function because of object equality
         for (Bookmark bookmark: allBookmarks){
             if (bookmark.getURL().equals(bm.getURL())){
                 bookmark.increaseRating();
@@ -108,9 +112,11 @@ public class BookmarkingTool {
     public List<Bookmark> listSortedByRating(){
         List<Bookmark> sortedList = allBookmarks;
         sortedList.sort(Comparator.comparingInt(Bookmark::getRating).reversed());
-        for (Bookmark bm: allBookmarks){
+        // removed, as this only serves in the CLI application
+        /*for (Bookmark bm: allBookmarks){
             bm.printBookmark();
         }
+        */
         return sortedList;
     }
 

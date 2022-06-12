@@ -122,6 +122,10 @@ public class BookmarkingTool {
     }
 
 
+    public List<Bookmark> listSortedByDate(){
+        throw new UnsupportedOperationException();
+    }
+
     public List<Bookmark> getAssociatedDomains(String url) throws MalformedURLException {
         List<Bookmark> associated = new ArrayList<>();
         URL provided = new URL(url);
@@ -134,6 +138,7 @@ public class BookmarkingTool {
         }
         return associated;
     }
+
 
 
 }

@@ -56,6 +56,11 @@ public class Bookmark {
         return this.date;
     }
 
+    //only used for testing
+    public void setDate(String date){
+        this.date = date;
+    }
+
     // removed, as this only serves in the CLI application
     /*public void printBookmark(){
         System.out.println("Rating: " + this.rating + ", URL: " + this.URL);

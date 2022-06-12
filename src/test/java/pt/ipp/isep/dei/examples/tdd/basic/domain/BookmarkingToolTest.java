@@ -242,4 +242,27 @@ public class BookmarkingToolTest {
         assertEquals(expected,actual);
 
     }
+
+
+    @Test
+    public void ensureDateListingIsCorrectAndInAscendingOrder(){
+        Bookmark bm = new Bookmark("https://facebook.com");
+        Bookmark bm2 = new Bookmark("https://google.com");
+        bm2.setDate("2023/01/09 14:10:36");
+        Bookmark bm3 = new Bookmark("https://wappler.com");
+        bm3.setDate("2021/11/22 19:04:11");
+        BookmarkingTool bt = new BookmarkingTool();
+        bt.addBookmark(bm);
+        bt.addBookmark(bm2);
+        bt.addBookmark(bm3);
+
+        String expected = "2023/01/09 14:10:36";
+        String actual = "";
+
+
+        // The first element in the sorted list should be bm2, the newest one from 2023.
+        actual = bt.listSortedByDate().get(0).getDate();
+
+        assertEquals(expected, actual);
+    }
 }

@@ -25,4 +25,4 @@ User Story 10: As a user I want to add a current date/time when I add a bookmark
 
 User Story 11: As a user I want to list my bookmarks sorted by rating (highest to smallest)
 
-User Story 12: As a user I want to list my bookmarks sorted by date (older to newer)
+User Story 12: As a user I want to list my bookmarks sorted by date (newer to older)

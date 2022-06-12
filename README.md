@@ -11,7 +11,7 @@ User Story 3: As a user when I add a duplicate bookmark, I want the system to in
 
 User Story 4: As a user I want to know how many of my bookmarks are secure URLs
 
-**User Story 5: !!!ToDo!!!**
+User Story 5: As a user I want a new bookmark to become associated with other bookmarks that are from the same domain
 
 User Story 6: As a user I want to be able to filter bookmarks by one keyword
 
